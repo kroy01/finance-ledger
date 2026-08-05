@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+             http://maven.apache.org/POM/4.0.0
+             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.roycorp</groupId>
+    <artifactId>finance-ledger</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <name>Finance Ledger</name>
+    <description>
+        GNOME-native personal finance ledger prototype using Java,
+        GTK 4 and libadwaita.
+    </description>
+
+    <properties>
+        <maven.compiler.release>25</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java-gi.version>0.10.2</java-gi.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.jwharm.javagi</groupId>
+            <artifactId>gtk</artifactId>
+            <version>${java-gi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.jwharm.javagi</groupId>
+            <artifactId>adw</artifactId>
+            <version>${java-gi.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <release>25</release>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <mainClass>
+                        com.roycorp.financeledger.FinanceLedgerApplication
+                    </mainClass>
+                    <jvmArguments>
+                        <jvmArgument>
+                            --enable-native-access=ALL-UNNAMED
+                        </jvmArgument>
+                    </jvmArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
