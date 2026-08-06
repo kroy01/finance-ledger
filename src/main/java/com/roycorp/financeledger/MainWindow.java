@@ -98,11 +98,8 @@ public final class MainWindow extends ApplicationWindow {
         addEntryButton.addCssClass("suggested-action");
         addEntryButton.setTooltipText("Add a finance entry");
 
-        /*
-         * Placeholder behaviour until the Add Entry window is implemented.
-         */
         addEntryButton.onClicked(
-                () -> pageStack.setVisibleChildName("ledger")
+                this::showAddEntryWindow
         );
 
         contentHeader.packEnd(addEntryButton);
@@ -453,5 +450,14 @@ public final class MainWindow extends ApplicationWindow {
                 pageName,
                 title
         );
+    }
+    private void showAddEntryWindow() {
+        AddEntryWindow addEntryWindow =
+                new AddEntryWindow(
+                        application,
+                        this
+                );
+
+        addEntryWindow.present();
     }
 }
