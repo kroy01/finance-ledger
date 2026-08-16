@@ -1,5 +1,6 @@
 package com.roycorp.financeledger;
 
+import com.roycorp.financeledger.ui.entry.ExpenseEntryView;
 import org.gnome.adw.Application;
 import org.gnome.adw.ApplicationWindow;
 import org.gnome.gtk.Window;
@@ -60,8 +61,8 @@ public final class AddEntryWindow
                 "Income"
         );
 
-        addEmptyEntryPage(
-                stack,
+        stack.addTitled(
+                new ExpenseEntryView(),
                 "expense",
                 "Expense"
         );
@@ -110,7 +111,20 @@ public final class AddEntryWindow
                 new StackSwitcher();
 
         entryTypeSwitcher.setStack(entryStack);
-        entryTypeSwitcher.setHalign(Align.CENTER);
+
+        entryTypeSwitcher.addCssClass(
+                "segmented-switcher"
+        );
+
+        entryTypeSwitcher.addCssClass(
+                "entry-type-switcher"
+        );
+
+        entryTypeSwitcher.setHalign(
+                Align.FILL
+        );
+
+        entryTypeSwitcher.setHexpand(true);
 
         entryStack.setHexpand(true);
         entryStack.setVexpand(true);
